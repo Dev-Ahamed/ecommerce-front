@@ -3,6 +3,7 @@ import { ShoppingCart } from "lucide-react";
 import { Product } from "@/types";
 import { Currency } from "@/components/ui/currency";
 import Button from "@/components/ui/button";
+import { priceFormatter } from "@/lib/price-formatter";
 
 interface ProductInfoProps {
   data: Product;
@@ -14,7 +15,7 @@ export const ProductInfo = ({ data }: ProductInfoProps) => {
       <h1 className="text-3xl font-bold text-gray-900">{data.name}</h1>
       <div className="mt-3 flex items-end justify-between">
         <div className="text-2xl text-gray-900">
-          <Currency value={data.price} />
+          <Currency value={priceFormatter.format(data.price)} />
         </div>
       </div>
       <hr className="my-4" />
