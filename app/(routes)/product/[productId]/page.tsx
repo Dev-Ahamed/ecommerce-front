@@ -40,11 +40,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
             {/* Gallery */}
             <Gallery images={product?.images || []} />
             {/* Info */}
-            <ProductInfo data={product} />
+            {/* <ProductInfo data={product} /> */}
           </div>
           <hr className="my-10" />
 
-          <ProductList title="Related Items" items={suggestedProducts} />
+          {/* <ProductList title="Related Items" items={suggestedProducts} /> */}
         </div>
       </Container>
     </div>
