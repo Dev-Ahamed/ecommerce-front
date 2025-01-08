@@ -30,23 +30,23 @@ export default async function ProductPage({ params }: ProductPageProps) {
       })
     : [];
 
-  return <div>Test</div>;
+  // return <div>Test</div>;
 
-  // return (
-  //   <div className="bg-white">
-  //     <Container>
-  //       <div className="px-4 py-10 sm:px-6 lg:px-6">
-  //         <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-2">
-  //           {/* Gallery */}
-  //           <Gallery images={product?.images || []} />
-  //           {/* Info */}
-  //           <ProductInfo data={product} />
-  //         </div>
-  //         <hr className="my-10" />
+  return (
+    <div className="bg-white">
+      <Container>
+        <div className="px-4 py-10 sm:px-6 lg:px-6">
+          <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-2">
+            {/* Gallery */}
+            <Gallery images={product?.images || []} />
+            {/* Info */}
+            <ProductInfo data={product} />
+          </div>
+          <hr className="my-10" />
 
-  //         <ProductList title="Related Items" items={suggestedProducts} />
-  //       </div>
-  //     </Container>
-  //   </div>
-  // );
+          <ProductList title="Related Items" items={suggestedProducts} />
+        </div>
+      </Container>
+    </div>
+  );
 }
