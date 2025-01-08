@@ -14,9 +14,21 @@ interface ProductPageProps {
 export default async function ProductPage({ params }: ProductPageProps) {
   const product = await getProduct(params.productId);
 
-  const suggestedProducts = await getProducts({
-    categoryId: product?.category?.id,
-  });
+  if (!product) {
+    return (
+      <div className="bg-white">
+        <Container>
+          <p className="text-neutral-500 text-sm">Product not found.</p>
+        </Container>
+      </div>
+    );
+  }
+
+  const suggestedProducts = product?.category?.id
+    ? await getProducts({
+        categoryId: product?.category?.id,
+      })
+    : [];
 
   return (
     <div className="bg-white">
@@ -24,7 +36,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <div className="px-4 py-10 sm:px-6 lg:px-6">
           <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-2">
             {/* Gallery */}
-            <Gallery images={product.images} />
+            <Gallery images={product?.images || []} />
             {/* Info */}
             <ProductInfo data={product} />
           </div>
