@@ -14,21 +14,9 @@ interface ProductPageProps {
 export default async function ProductPage({ params }: ProductPageProps) {
   const product = await getProduct(params.productId);
 
-  if (!product) {
-    return (
-      <div className="bg-white">
-        <Container>
-          <p className="text-neutral-500 text-sm">Product not found.</p>
-        </Container>
-      </div>
-    );
-  }
-
-  const suggestedProducts = product?.category?.id
-    ? await getProducts({
-        categoryId: product?.category?.id,
-      })
-    : [];
+  const suggestedProducts = await getProducts({
+    categoryId: product?.category?.id,
+  });
 
   // return <div>Test</div>;
 
